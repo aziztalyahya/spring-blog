@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('rollMade')"></head>
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<p>Choice: <span th:text="${choice}" /></p>
+<p>Random Roll: <span th:text="${randomNum}" /></p>
+
+
+<div th:if="${answerIsCorrect}">
+    You guessed the right number!
+</div>
+<div th:unless="${answerIsCorrect}">
+    Your number is not correct
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
