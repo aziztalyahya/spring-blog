@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('rollMade')"></head>
+
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<table>
+    <th:block th:each="post : ${posts}">
+        <tr>
+            <td th:text="'Title: ' + ${post.title}">...</td>
+            <td th:text="'Description: ' + ${post.body}">...</td>
+        </tr>
+    </th:block>
+</table>
+
+</body>
+</html>
