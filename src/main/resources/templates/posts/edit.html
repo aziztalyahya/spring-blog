@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('rollMade')"></head>
+
+<body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<form method="post" th:action="@{/posts/{id}/edit(id=${post.id})}">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input id="title" name="title" th:value="${post.title}" />
+        <label for="description">Description</label>
+        <input type="text" id="description" name="description" th:value="${post.body}" />
+    </div>
+    <input type="submit" />
+</form>
+
+
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

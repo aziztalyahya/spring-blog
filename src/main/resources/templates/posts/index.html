@@ -5,14 +5,12 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<table>
-    <th:block th:each="post : ${posts}">
-        <tr>
-            <td th:text="'Title: ' + ${post.title}">...</td>
-            <td th:text="'Description: ' + ${post.body}">...</td>
-        </tr>
-    </th:block>
-</table>
+    <div th:each="post : ${posts}">
+        <a th:href="'/posts/' + ${post.id}"><h5 th:text="'Title: ' + ${post.title}"></h5></a>
+        <p th:text="'Description: ' + ${post.body}"></p>
+        <hr />
+    </div>
 
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>
