@@ -5,11 +5,17 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-    <div th:each="post : ${posts}">
-        <a th:href="'/posts/' + ${post.id}"><h5 th:text="'Title: ' + ${post.title}"></h5></a>
-        <p th:text="'Description: ' + ${post.body}"></p>
-        <hr />
+
+<div th:each="post : ${posts}">
+<div class="card">
+    <h5 class="card-header">Featured</h5>
+    <div class="card-body">
+        <h5  class="card-title" th:text="'Title: ' + ${post.title}"></h5>
+        <p class="card-text" th:text="'Description: ' + ${post.body}"></p>
+        <a th:href="'/posts/' + ${post.id}" class="btn btn-primary">View Post</a>
     </div>
+</div>
+</div>
 
 <div th:replace="fragments/footer :: footer"></div>
 </body>

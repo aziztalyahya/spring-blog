@@ -5,14 +5,18 @@
 <body>
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<form class="form-group" th:method="post" th:action="@{/posts/create}" th:object="${post}">
+<form class="form-group" th:method="post" th:action="@{/posts/create}" enctype="multipart/form-data">
     Title:
-    <input th:field="*{title}" />
+    <input th:name="title" />
     <br />
     Body:
-    <input th:field="*{body}" />
+    <input th:name="body" />
     <br />
-    <input type="submit" />
+        <label for="file">Upload a file!</label>
+        <input id="file" name="file" type="file" />
+        <br />
+        <input type="submit" value="upload" />
+    <!--<input type="submit" />-->
 </form>
 
 

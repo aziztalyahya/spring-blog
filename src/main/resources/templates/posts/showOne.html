@@ -6,6 +6,10 @@
 
     <span>Title: </span><p th:text="${post.title}"></p>
     <span>Description: </span><p th:text="${post.body}"></p>
+    <div th:text="${post.filePath}"></div>
+    <div><img th:src="${post.filePath}" style="height: 450px; width: 450px" /></div>
+    <!--<div th:style="'background-image: localhost:8080'+ ${post.filePath}"></div>-->
+
     <a class="btn btn-primary" th:href="@{/posts/{id}/edit(id=${post.id})}" role="button">Edit</a>
     <form class="btn d-inline" th:action="@{/posts/delete}" th:method="POST">
         <button class="btn btn-danger" th:value="${post.id}" th:name="id">Delete</button>

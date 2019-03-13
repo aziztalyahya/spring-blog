@@ -1,5 +1,7 @@
 package com.codeup.blog.models;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,31 @@ public class Post {
 
     @Column(nullable = false, length = 250)
     private String body;
+
+//    @Value("${file-upload-path}")
+    @Column(nullable = false, length = 255)
+    private String filePath;
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public Post(String title, String body, String filePath) {
+        this.title = title;
+        this.body = body;
+        this.filePath = filePath;
+    }
+
+    public Post(long id, String title, String body, String filePath) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.filePath = filePath;
+    }
 
     public Post(){
 
