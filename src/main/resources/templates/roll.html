@@ -6,12 +6,11 @@
 <h1>This is the roll Page</h1>
 
 <ul>
-    <li><a th:href="@{/roll/1}">1</a></li>
-    <li><a th:href="@{/roll/2}">2</a></li>
-    <li><a th:href="@{/roll/3}">3</a></li>
-    <li><a th:href="@{/roll/4}">4</a></li>
-    <li><a th:href="@{/roll/5}">5</a></li>
-    <li><a th:href="@{/roll/6}">6</a></li>
+    <form th:action="@{/roll/choice}" method="get">
+        <div>Please enter a number between 1 and 20</div>
+        <input th:name="choice" />
+        <button type="submit" >Submit</button>
+    </form>
 </ul>
 
 <footer th:replace="fragments/footer :: footer"></footer>

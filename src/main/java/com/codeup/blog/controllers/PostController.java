@@ -2,7 +2,6 @@ package com.codeup.blog.controllers;
 
 import com.codeup.blog.models.Post;
 import com.codeup.blog.repositories.PostRepository;
-import com.codeup.blog.services.EmailService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,14 +15,12 @@ import java.nio.file.Paths;
 @Controller
 public class PostController {
     private final PostRepository postDao;
-    private final EmailService emailService;
 
     @Value("${file-upload-path}")
     private String uploadPath;
 
-    public PostController(PostRepository postDao, EmailService es) {
+    public PostController(PostRepository postDao) {
         this.postDao = postDao;
-        this.emailService = es;
     }
 
 
@@ -72,6 +69,7 @@ public class PostController {
                          @RequestParam(name = "body") String body, Model model) {
         String filename = uploadedFile.getOriginalFilename();
         System.out.println(filename);
+        String uploadForPost = "/uploads/" + filename;
         String filepath = Paths.get(uploadPath, filename).toString();
         System.out.println(filepath);
         File destinationFile = new File(filepath);
@@ -85,8 +83,7 @@ public class PostController {
             e.printStackTrace();
             model.addAttribute("message", "Oops! Something went wrong! " + e);
         }
-        Post post = new Post(title, body, filepath);
-        emailService.prepareAndSend("mail@mail.com", title, body);
+        Post post = new Post(title, body, uploadForPost);
         // save the ad...
         save(post);
         // redirect to to the index with all the ads

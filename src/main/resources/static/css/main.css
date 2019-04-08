@@ -3,3 +3,18 @@ body {
     background-color: bisque;
 }
 
+.flexThis{
+    display: flex;
+}
+
+.displayInFlex{
+    display: inline-flex;
+}
+
+.cardWidth{
+    width: 300px;
+}
+
+.cardHeight{
+    height: 300px;
+}
